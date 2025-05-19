@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Pedido de Desculpas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f4f8; /* tom pastel claro */
+      color: #1f4e79; /* azul escuro */
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-size: cover;
+      animation: fundo-animacao 10s linear infinite;
+    }
+
+    @keyframes fundo-animacao {
+      0% {
+        background-position: 0% 0%;
+      }
+      100% {
+        background-position: 100% 100%;
+      }
+    }
+
+    h1 {
+      color: #1f4e79;
+      margin-top: 100px;
+      font-size: 36px;
+    }
+
+    .pedido {
+      margin-bottom: 20px;
+    }
+
+    .imagem-desculpa {
+      margin: 20px auto;
+      max-width: 300px;
+    }
+
+    .imagem-desculpa img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .botoes {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .botao {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 20px;
+      background-color: #5fa8d3;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      margin: 0 10px;
+      transition: transform 0.3s;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .botao:hover {
+      transform: scale(1.1);
+    }
+
+    .animacao {
+      display: none;
+      margin-top: 40px;
+      font-size: 24px;
+      color: #1f4e79;
+      animation: pulsar 2s infinite;
+    }
+
+    @keyframes pulsar {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .coracao {
+      position: absolute;
+      font-size: 30px;
+      color: #5fa8d3;
+      animation: explodir 0.5s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes explodir {
+      0% { opacity: 1; transform: scale(0); }
+      100% { opacity: 0; transform: scale(1.5); }
+    }
+
+    #nao {
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    #nao:hover {
+      transform: scale(1.2);
+      background-color: #c62828;
+    }
+  </style>
+</head>
+<body>
+  <div class="pedido">
+    <h1>Você me perdoa?</h1>
+  </div>
+
+  <div class="imagem-desculpa">
+    <!-- Substitua esse src por uma imagem sua de pedido de desculpas -->
+    <img src="https://i.pinimg.com/474x/b8/fc/80/b8fc805886c1500541a2b3bb6bd541f1.jpg" alt="Imagem de pedido de desculpas">
+  </div>
+
+  <div class="botoes">
+    <button id="sim" class="botao">Sim</button>
+    <button id="nao" class="botao">Não</button>
+  </div>
+
+  <div id="animacao" class="animacao">
+    Obrigado por me perdoar! 💙
+  </div>
+
+  <script>
+    const simButton = document.getElementById('sim');
+    const naoButton = document.getElementById('nao');
+    const animacaoDiv = document.getElementById('animacao');
+
+    function moverBotaoNao() {
+      const maxX = window.innerWidth - naoButton.offsetWidth;
+      const maxY = window.innerHeight - naoButton.offsetHeight;
+      const newX = Math.floor(Math.random() * maxX);
+      const newY = Math.floor(Math.random() * maxY);
+
+      naoButton.style.left = `${newX}px`;
+      naoButton.style.top = `${newY}px`;
+    }
+
+    function criarCoracao(x, y) {
+      const coracao = document.createElement('div');
+      coracao.classList.add('coracao');
+
+      const emojis = ['💙', '🩵', '🤍', '💧', '💌'];
+      const emojiAleatorio = emojis[Math.floor(Math.random() * emojis.length)];
+      coracao.textContent = emojiAleatorio;
+
+      coracao.style.left = `${x}px`;
+      coracao.style.top = `${y}px`;
+
+      document.body.appendChild(coracao);
+
+      setTimeout(() => {
+        coracao.remove();
+      }, 1500);
+    }
+
+    simButton.addEventListener('click', () => {
+      simButton.style.display = 'none';
+      naoButton.style.display = 'none';
+      animacaoDiv.style.display = 'block';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      const rect = naoButton.getBoundingClientRect();
+      const distance = Math.sqrt(
+        Math.pow(e.clientX - (rect.left + rect.width / 2), 2) +
+        Math.pow(e.clientY - (rect.top + rect.height / 2), 2)
+      );
+      if (distance < 100) {
+        moverBotaoNao();
+      }
+    });
+
+    naoButton.style.left = `${simButton.offsetLeft + simButton.offsetWidth + 10}px`;
+    naoButton.style.top = `${simButton.offsetTop}px`;
+
+    document.addEventListener('click', (e) => {
+      criarCoracao(e.clientX, e.clientY);
+    });
+
+    document.addEventListener('touchstart', (e) => {
+      const touch = e.touches[0];
+      criarCoracao(touch.clientX, touch.clientY);
+    });
+  </script>
+</body>
+</html>
