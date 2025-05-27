@@ -2,13 +2,13 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Pedido de Desculpas</title>
+  <title>Maria Julia, aceitaria namorar comigo?</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
       text-align: center;
-      background: #f0f4f8; /* tom pastel claro */
-      color: #1f4e79; /* azul escuro */
+      background: #fff0f5; /* rosa claro */
+      color: #d81b60; /* rosa escuro */
       margin: 0;
       padding: 0;
       overflow: hidden;
@@ -17,16 +17,12 @@
     }
 
     @keyframes fundo-animacao {
-      0% {
-        background-position: 0% 0%;
-      }
-      100% {
-        background-position: 100% 100%;
-      }
+      0% { background-position: 0% 0%; }
+      100% { background-position: 100% 100%; }
     }
 
     h1 {
-      color: #1f4e79;
+      color: #d81b60;
       margin-top: 100px;
       font-size: 36px;
     }
@@ -35,15 +31,15 @@
       margin-bottom: 20px;
     }
 
-    .imagem-desculpa {
+    .imagem-amor {
       margin: 20px auto;
       max-width: 300px;
     }
 
-    .imagem-desculpa img {
+    .imagem-amor img {
       max-width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(255, 105, 180, 0.3);
     }
 
     .botoes {
@@ -54,16 +50,16 @@
 
     .botao {
       display: inline-block;
-      padding: 10px 20px;
+      padding: 12px 24px;
       font-size: 20px;
-      background-color: #5fa8d3;
+      background-color: #f06292;
       color: #fff;
       border: none;
       cursor: pointer;
       margin: 0 10px;
       transition: transform 0.3s;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     .botao:hover {
@@ -73,8 +69,8 @@
     .animacao {
       display: none;
       margin-top: 40px;
-      font-size: 24px;
-      color: #1f4e79;
+      font-size: 26px;
+      color: #d81b60;
       animation: pulsar 2s infinite;
     }
 
@@ -87,7 +83,7 @@
     .coracao {
       position: absolute;
       font-size: 30px;
-      color: #5fa8d3;
+      color: #f06292;
       animation: explodir 0.5s ease-out forwards;
       pointer-events: none;
     }
@@ -106,27 +102,26 @@
 
     #nao:hover {
       transform: scale(1.2);
-      background-color: #c62828;
+      background-color: #c2185b;
     }
   </style>
 </head>
 <body>
   <div class="pedido">
-    <h1>Você me perdoa?</h1>
+    <h1>Maria Julia, aceitaria namorar comigo? 💖</h1>
   </div>
 
-  <div class="imagem-desculpa">
-    <!-- Substitua esse src por uma imagem sua de pedido de desculpas -->
-    <img src="https://i.pinimg.com/474x/b8/fc/80/b8fc805886c1500541a2b3bb6bd541f1.jpg" alt="Imagem de pedido de desculpas">
+  <div class="imagem-amor">
+    <img src="https://horadafesta.com.br/wp-content/uploads/2023/05/5-14.png" alt="Imagem romântica">
   </div>
 
   <div class="botoes">
-    <button id="sim" class="botao">Sim</button>
-    <button id="nao" class="botao">Não</button>
+    <button id="sim" class="botao">Sim! 💞</button>
+    <button id="nao" class="botao">Não 😢</button>
   </div>
 
   <div id="animacao" class="animacao">
-    Obrigado por me perdoar! 💙
+    Você fez meu coração mais feliz, te amo! 💘💖
   </div>
 
   <script>
@@ -148,7 +143,7 @@
       const coracao = document.createElement('div');
       coracao.classList.add('coracao');
 
-      const emojis = ['💙', '🩵', '🤍', '💧', '💌'];
+      const emojis = ['💖', '💗', '💕', '💓', '💘', '💝'];
       const emojiAleatorio = emojis[Math.floor(Math.random() * emojis.length)];
       coracao.textContent = emojiAleatorio;
 
