@@ -7,7 +7,7 @@
     body {
       font-family: 'Comic Sans MS', cursive, sans-serif;
       text-align: center;
-      background: #fff0f5;
+      background: #ffe6f0; /* rosa mais fraquinho */
       color: #d81b60;
       margin: 0;
       padding: 0;
@@ -36,7 +36,7 @@
 
     .imagem-amor {
       margin: 20px auto;
-      max-width: 300px;
+      max-width: 450px; /* aumentei o tamanho */
     }
 
     .imagem-amor img {
@@ -55,7 +55,7 @@
       display: inline-block;
       padding: 12px 24px;
       font-size: 20px;
-      background-color: #f06292;
+      background-color: #f48fb1; /* rosa clarinho */
       color: #fff;
       border: none;
       cursor: pointer;
@@ -86,7 +86,7 @@
     .coracao {
       position: absolute;
       font-size: 30px;
-      color: #f06292;
+      color: #f48fb1;
       animation: explodir 0.5s ease-out forwards;
       pointer-events: none;
     }
@@ -111,16 +111,15 @@
 </head>
 <body>
   <div class="pedido">
-    <h1>Fernanda, tenho algo pra te dizer... 💖</h1>
+    <h1>Raposinha, tenho algo pra te dizer... 💖</h1>
     <div class="mensagem">
-      Obrigado por esses momentos incríveis que já tivemos juntos.<br>
-      Quero muito viver ainda mais histórias ao seu lado, rir, viajar, sonhar...<br><br>
-      Aceita ser minha namorada e futura esposa, daqui para todo o sempre? 💕
+      A distância dói, mas quando o amor é real, não há quilômetros que separem dois corações que sentem o mesmo amor...<br><br>
+      Quero que você esteja ao meu lado, daqui para todo o sempre, aceita ser alguem especial na minha vida? 💕
     </div>
   </div>
 
   <div class="imagem-amor">
-    <img src="https://thumbs.dreamstime.com/b/chibi-couple-expressing-love-affection-cute-romantic-cartoon-sweet-kiss-355297488.jpg" alt="Imagem romântica">
+    <img src="foto.gif" alt="Nossa foto especial">
   </div>
 
   <div class="botoes">
@@ -132,69 +131,72 @@
     Mal posso esperar por todos os momentos lindos que ainda vamos viver juntos! 💖✨
   </div>
 
-  <script>
-    const simButton = document.getElementById('sim');
-    const naoButton = document.getElementById('nao');
-    const animacaoDiv = document.getElementById('animacao');
+	<script>
+	  const simButton = document.getElementById('sim');
+	  const naoButton = document.getElementById('nao');
+	  const animacaoDiv = document.getElementById('animacao');
 
-    function moverBotaoNao() {
-      const maxX = window.innerWidth - naoButton.offsetWidth;
-      const maxY = window.innerHeight - naoButton.offsetHeight;
-      const newX = Math.floor(Math.random() * maxX);
-      const newY = Math.floor(Math.random() * maxY);
+	  function moverBotaoNao() {
+		const maxX = window.innerWidth - naoButton.offsetWidth;
+		const maxY = window.innerHeight - naoButton.offsetHeight;
+		const newX = Math.floor(Math.random() * maxX);
+		const newY = Math.floor(Math.random() * maxY);
 
-      naoButton.style.left = `${newX}px`;
-      naoButton.style.top = `${newY}px`;
-    }
+		naoButton.style.left = `${newX}px`;
+		naoButton.style.top = `${newY}px`;
+	  }
 
-    function criarCoracao(x, y) {
-      const coracao = document.createElement('div');
-      coracao.classList.add('coracao');
+	  function criarCoracao(x, y) {
+		const coracao = document.createElement('div');
+		coracao.classList.add('coracao');
 
-      const emojis = ['💖', '💗', '💕', '💓', '💘', '💝'];
-      const emojiAleatorio = emojis[Math.floor(Math.random() * emojis.length)];
-      coracao.textContent = emojiAleatorio;
+		const emojis = ['💖', '💗', '💕', '💓', '💘', '💝'];
+		const emojiAleatorio = emojis[Math.floor(Math.random() * emojis.length)];
+		coracao.textContent = emojiAleatorio;
 
-      coracao.style.left = `${x}px`;
-      coracao.style.top = `${y}px`;
+		coracao.style.left = `${x}px`;
+		coracao.style.top = `${y}px`;
 
-      document.body.appendChild(coracao);
+		document.body.appendChild(coracao);
 
-      setTimeout(() => {
-        coracao.remove();
-      }, 1500);
-    }
+		setTimeout(() => {
+		  coracao.remove();
+		}, 1500);
+	  }
 
-    simButton.addEventListener('click', () => {
-      simButton.style.display = 'none';
-      naoButton.style.display = 'none';
-      animacaoDiv.style.display = 'block';
-    });
+	  simButton.addEventListener('click', () => {
+		simButton.style.display = 'none';
+		naoButton.style.display = 'none';
+		animacaoDiv.style.display = 'block';
+	  });
 
-    document.addEventListener('mousemove', (e) => {
-      const rect = naoButton.getBoundingClientRect();
-      const distance = Math.sqrt(
-        Math.pow(e.clientX - (rect.left + rect.width / 2), 2) +
-        Math.pow(e.clientY - (rect.top + rect.height / 2), 2)
-      );
-      if (distance < 100) {
-        moverBotaoNao();
-      }
-    });
+	  document.addEventListener('mousemove', (e) => {
+		const rect = naoButton.getBoundingClientRect();
+		const distance = Math.sqrt(
+		  Math.pow(e.clientX - (rect.left + rect.width / 2), 2) +
+		  Math.pow(e.clientY - (rect.top + rect.height / 2), 2)
+		);
+		if (distance < 100) {
+		  moverBotaoNao();
+		}
+	  });
 
-    naoButton.style.left = `${simButton.offsetLeft + simButton.offsetWidth + 10}px`;
-    naoButton.style.top = `${simButton.offsetTop}px`;
+	  // 🔹 Define a posição inicial do botão "Não" logo ao lado do "Sim"
+	  window.onload = () => {
+		naoButton.style.position = "absolute";
+		naoButton.style.left = `${simButton.offsetLeft + simButton.offsetWidth + 20}px`;
+		naoButton.style.top = `${simButton.offsetTop}px`;
+	  };
 
-    document.addEventListener('click', (e) => {
-      criarCoracao(e.clientX, e.clientY);
-    });
+	  document.addEventListener('click', (e) => {
+		criarCoracao(e.clientX, e.clientY);
+	  });
 
-    document.addEventListener('touchstart', (e) => {
-      const touch = e.touches[0];
-      criarCoracao(touch.clientX, touch.clientY);
-    });
-  </script>
+	  document.addEventListener('touchstart', (e) => {
+		const touch = e.touches[0];
+		criarCoracao(touch.clientX, touch.clientY);
+	  });
+	</script>
+
 </body>
 </html>
-
-
