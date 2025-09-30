@@ -2,27 +2,28 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Um Pedido Especial</title>
+  <title>Um Pedido Divertido</title>
   <style>
     body {
       font-family: 'Comic Sans MS', cursive, sans-serif;
       text-align: center;
-      background: #ffe6f0; /* rosa mais fraquinho */
-      color: #d81b60;
+      background: linear-gradient(135deg, #d9fdd3, #e5d4f9); /* verde pastel e roxo pastel */
+      color: #5a2a7e;
       margin: 0;
       padding: 0;
       overflow: hidden;
-      background-size: cover;
-      animation: fundo-animacao 10s linear infinite;
+      background-size: 400% 400%;
+      animation: fundo-animacao 10s ease infinite;
     }
 
     @keyframes fundo-animacao {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 100% 100%; }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     h1 {
-      color: #d81b60;
+      color: #4a148c; 
       margin-top: 80px;
       font-size: 36px;
     }
@@ -31,18 +32,18 @@
       font-size: 20px;
       margin: 20px auto;
       max-width: 600px;
-      color: #ad1457;
+      color: #33691e; 
     }
 
     .imagem-amor {
       margin: 20px auto;
-      max-width: 450px; /* aumentei o tamanho */
+      max-width: 450px;
     }
 
     .imagem-amor img {
       max-width: 100%;
       border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(255, 105, 180, 0.3);
+      box-shadow: 0 4px 20px rgba(90, 42, 126, 0.3);
     }
 
     .botoes {
@@ -55,25 +56,26 @@
       display: inline-block;
       padding: 12px 24px;
       font-size: 20px;
-      background-color: #f48fb1; /* rosa clarinho */
+      background-color: #b39ddb; 
       color: #fff;
       border: none;
       cursor: pointer;
       margin: 0 10px;
-      transition: transform 0.3s;
+      transition: transform 0.3s, background-color 0.3s;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     .botao:hover {
       transform: scale(1.1);
+      background-color: #7e57c2;
     }
 
     .animacao {
       display: none;
       margin-top: 40px;
       font-size: 26px;
-      color: #d81b60;
+      color: #2e7d32;
       animation: pulsar 2s infinite;
     }
 
@@ -86,7 +88,7 @@
     .coracao {
       position: absolute;
       font-size: 30px;
-      color: #f48fb1;
+      color: #9575cd;
       animation: explodir 0.5s ease-out forwards;
       pointer-events: none;
     }
@@ -105,30 +107,30 @@
 
     #nao:hover {
       transform: scale(1.2);
-      background-color: #c2185b;
+      background-color: #388e3c; 
     }
   </style>
 </head>
 <body>
   <div class="pedido">
-    <h1>Raposinha, tenho algo pra te dizer... 💖</h1>
+    <h1>Thabata, preciso te perguntar uma coisa... 💜💚</h1>
     <div class="mensagem">
-      A distância dói, mas quando o amor é real, não há quilômetros que separem dois corações que sentem o mesmo amor...<br><br>
-      Quero que você esteja ao meu lado, daqui para todo o sempre, aceita ser alguem especial na minha vida? 💕
+      Já sei que nos conhecemos faz pouco tempo, mas a vida é curta demais pra não se divertir, né? 😁<br><br>
+	  Bora tentar fechar essa contagem no 14 (ta grande já) e embarcar comigo nessa zueira que se chama vida?
     </div>
   </div>
 
   <div class="imagem-amor">
-    <img src="foto.gif" alt="Nossa foto especial">
+    <img src="fotinha.jpg" alt="Foto divertida">
   </div>
 
   <div class="botoes">
-    <button id="sim" class="botao">Sim! Claro 💕</button>
+    <button id="sim" class="botao">Bora! 🚀</button>
     <button id="nao" class="botao">Não 😢</button>
   </div>
 
   <div id="animacao" class="animacao">
-    Mal posso esperar por todos os momentos lindos que ainda vamos viver juntos! 💖✨
+    Boa escolha, Thabata! Agora a diversão tá garantida 😎🎉
   </div>
 
 	<script>
@@ -150,7 +152,7 @@
 		const coracao = document.createElement('div');
 		coracao.classList.add('coracao');
 
-		const emojis = ['💖', '💗', '💕', '💓', '💘', '💝'];
+		const emojis = ['💚', '💜', '✨', '🌸', '😎', '🎉'];
 		const emojiAleatorio = emojis[Math.floor(Math.random() * emojis.length)];
 		coracao.textContent = emojiAleatorio;
 
@@ -181,7 +183,6 @@
 		}
 	  });
 
-	  // 🔹 Define a posição inicial do botão "Não" logo ao lado do "Sim"
 	  window.onload = () => {
 		naoButton.style.position = "absolute";
 		naoButton.style.left = `${simButton.offsetLeft + simButton.offsetWidth + 20}px`;
